@@ -132,7 +132,7 @@ function initDailyLimitSimulator() {
     const remaining = Math.max(0, allowance - spent);
     const days = Math.max(1, parseInt(state.daysRemaining) || 1);
 
-    // Core PBL mathematical formulation: floor(remaining / days)
+    // Mathematical formulation: floor(remaining / days)
     const safeDailyLimit = Math.floor(remaining / days);
     const spendPct = allowance > 0 ? Math.round((spent / allowance) * 100) : 0;
 
@@ -153,7 +153,7 @@ function initDailyLimitSimulator() {
       formulaEquation.textContent = `⌊ ₹${remaining.toLocaleString('en-IN')} ÷ ${days} days ⌋ = ₹${safeDailyLimit}/day`;
     }
 
-    // Dynamic Budget Health Badge update (Real PBL boundaries)
+    // Dynamic Budget Health Badge update
     if (healthBadge) {
       healthBadge.className = 'health-badge';
       if (spendPct >= 95) {

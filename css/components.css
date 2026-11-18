@@ -63,7 +63,7 @@
   transform: translate(3px, -3px);
 }
 
-/* Budget Health Badges (Strictly Real PBL Content) */
+/* Budget Health Badges */
 .health-badge {
   display: inline-flex;
   align-items: center;
