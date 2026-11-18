@@ -1,0 +1,562 @@
+/* ==========================================================================
+   PAGE SECTIONS — HERO, DECOUPLING, 3-INPUTS, CALIPER, 8-TABS & FOOTER
+   Asymmetric Editorial Geometry with High Typography Scale Contrast
+   ========================================================================== */
+
+/* Section Utility */
+.section {
+  padding: var(--space-4xl) 0;
+  position: relative;
+  border-bottom: 1px solid var(--border-hairline);
+  scroll-margin-top: 85px;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-badge);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-signal);
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-label::before {
+  content: "//";
+  color: var(--text-tertiary);
+}
+
+.section-heading-huge {
+  font-size: var(--text-display-1);
+  line-height: 1.05;
+  margin-bottom: var(--space-lg);
+  max-width: 900px;
+}
+
+/* ==========================================================================
+   1. HERO SECTION ("Where did your allowance go?")
+   ========================================================================== */
+.hero-section {
+  padding-top: calc(68px + var(--space-4xl));
+  padding-bottom: var(--space-4xl);
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+
+.hero-headline {
+  font-size: var(--text-hero);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  margin-bottom: var(--space-xl);
+  color: var(--text-primary);
+}
+
+.hero-headline .highlight-signal {
+  color: var(--accent-signal);
+  display: inline-block;
+  position: relative;
+}
+
+.hero-subhead {
+  font-size: var(--text-body-lg);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 600px;
+  margin-bottom: var(--space-2xl);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.hero-meta-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.hero-meta-item {
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  color: var(--text-tertiary);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.hero-meta-item strong {
+  color: var(--text-primary);
+}
+
+/* Hero Right Side: Live Tactical Caliper Teaser */
+.hero-caliper-teaser {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  border-radius: 6px;
+  padding: var(--space-xl);
+  position: relative;
+  box-shadow: 0 25px 60px -15px rgba(0,0,0,0.7);
+}
+
+.hero-caliper-teaser::before {
+  content: "LIVE SIMULATION // 25 DAYS REMAINING";
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  background: var(--accent-signal);
+  color: #FFFFFF;
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+
+.hero-teaser-numbers {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin: var(--space-md) 0 var(--space-lg) 0;
+}
+
+.teaser-eq-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-badge);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.teaser-big-val {
+  font-family: var(--font-mono);
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 700;
+  color: var(--accent-mint);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.teaser-math-desc {
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  color: var(--text-secondary);
+  background: var(--bg-surface-elevated);
+  padding: 0.6rem 0.85rem;
+  border-radius: 3px;
+  border-left: 3px solid var(--accent-mint);
+}
+
+/* ==========================================================================
+   2. THE UPI DECOUPLING REALITY CHECK
+   ========================================================================== */
+.decoupling-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .decoupling-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.receipt-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed #D0C9BA;
+  font-size: var(--text-small);
+}
+
+.receipt-item-row.bold-total {
+  border-bottom: 2px solid #000;
+  border-top: 2px solid #000;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  padding: 0.65rem 0;
+}
+
+.contrast-quote-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  border-left: 4px solid var(--accent-signal);
+  padding: var(--space-xl);
+  border-radius: 4px;
+}
+
+.contrast-quote-card p {
+  font-size: var(--text-body-lg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  margin-bottom: var(--space-md);
+}
+
+.contrast-author {
+  font-family: var(--font-mono);
+  font-size: var(--text-badge);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   3. THE 3-INPUT ENTRY ARCHITECTURE (<5 SECONDS)
+   ========================================================================== */
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  margin-top: var(--space-2xl);
+}
+
+@media (min-width: 900px) {
+  .comparison-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.compare-card {
+  padding: var(--space-xl);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.compare-card.card-traditional {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  opacity: 0.85;
+}
+
+.compare-card.card-tracker {
+  background: var(--bg-surface-elevated);
+  border: 1.5px solid var(--accent-mint);
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 229, 153, 0.08);
+}
+
+.card-pill-tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-badge);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  padding: 0.3rem 0.75rem;
+  border-radius: 2px;
+  width: fit-content;
+  margin-bottom: var(--space-md);
+}
+
+.compare-card.card-traditional .card-pill-tag {
+  background: rgba(255, 51, 75, 0.15);
+  color: var(--accent-crimson);
+}
+
+.compare-card.card-tracker .card-pill-tag {
+  background: var(--accent-mint-dim);
+  color: var(--accent-mint);
+}
+
+.input-steps-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin: var(--space-lg) 0;
+}
+
+.input-step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.step-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 3px;
+  background: var(--bg-surface-high);
+  border: 1px solid var(--border-medium);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: var(--text-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-mint);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   4. INTERACTIVE 8-TAB DEVICE SHOWCASE
+   ========================================================================== */
+.showcase-desc-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.tab-content-panel {
+  display: none;
+  animation: fadeIn 0.25s var(--ease-snappy);
+}
+
+.tab-content-panel.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Visual UI Elements rendered within Device Screen */
+.screen-mock-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.screen-stat-box {
+  background: #14171E;
+  border: 1px solid #232733;
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+.screen-stat-box .title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.screen-stat-box .val {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0.25rem 0;
+}
+
+.screen-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+}
+
+.screen-table th {
+  background: #14171E;
+  padding: 0.65rem 0.85rem;
+  color: var(--text-secondary);
+  text-align: left;
+  border-bottom: 1px solid #262B38;
+}
+
+.screen-table td {
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid #1A1E27;
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   5. ZERO-CLOUD PRIVACY & LOCAL-FIRST SOVEREIGNTY
+   ========================================================================== */
+.privacy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-2xl);
+}
+
+.privacy-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  padding: var(--space-xl);
+  transition: transform var(--duration-fast), border-color var(--duration-fast);
+}
+
+.privacy-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-medium);
+}
+
+.privacy-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-mint);
+  margin-bottom: var(--space-md);
+}
+
+.privacy-card h4 {
+  font-size: var(--text-display-3);
+  margin-bottom: var(--space-xs);
+}
+
+/* ==========================================================================
+   6. ACADEMIC PROVENANCE & TEAM CREDITS
+   ========================================================================== */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.team-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.team-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.team-avatar-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 4px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--accent-signal);
+}
+
+.team-card h4 {
+  font-size: 1.1rem;
+  margin-bottom: 2px;
+}
+
+.team-role {
+  font-family: var(--font-mono);
+  font-size: var(--text-badge);
+  color: var(--accent-mint);
+  text-transform: uppercase;
+}
+
+.team-meta {
+  font-family: var(--font-mono);
+  font-size: var(--text-badge);
+  color: var(--text-tertiary);
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* Institutional Mentorship Card */
+.institution-banner {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-medium);
+  border-left: 4px solid var(--accent-amber);
+  border-radius: 4px;
+  padding: var(--space-lg) var(--space-xl);
+  margin-top: var(--space-xl);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+/* ==========================================================================
+   7. GIANT CONVERSION FOOTER ("Stop guessing. Start surviving.")
+   ========================================================================== */
+.footer-cta-section {
+  padding: var(--space-5xl) 0 var(--space-3xl) 0;
+  background: #08090B;
+  border-top: 1px solid var(--border-subtle);
+  position: relative;
+}
+
+.footer-huge-title {
+  font-size: var(--text-giant);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin-bottom: var(--space-xl);
+}
+
+.footer-huge-title span {
+  display: block;
+}
+
+.footer-huge-title .strike-text {
+  color: var(--text-tertiary);
+  text-decoration: line-through;
+  text-decoration-color: var(--accent-crimson);
+}
+
+.footer-huge-title .bold-accent {
+  color: var(--accent-signal);
+}
+
+.footer-bottom-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-4xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--border-hairline);
+  font-family: var(--font-mono);
+  font-size: var(--text-badge);
+  color: var(--text-tertiary);
+}
