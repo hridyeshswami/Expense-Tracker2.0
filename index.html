@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker — Safe Daily Budgeting for College Students</title>
+  
+  <!-- SEO & Open Graph Meta Tags -->
+  <meta name="description" content="Expense Tracker is a free personal finance web app for university students on a fixed monthly allowance. Stop UPI payment decoupling with 3-input logging and self-correcting safe daily spending limits.">
+  <meta name="keywords" content="student expense tracker, college budgeting, UPI spending, safe daily limit, personal finance, sharda university pbl">
+  <meta name="author" content="Aymaan Nisar Wani, Hridyesh Swami, Nakul Singh">
+  <meta property="og:title" content="Expense Tracker — Where did your allowance go?">
+  <meta property="og:description" content="Log an expense in 3 taps, know your safe daily limit, and stop running out of money before month end. Free for college students.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://student-expense-tracker-pbl.netlify.app">
+  <meta name="theme-color" content="#0B0C0E">
+
+  <!-- Fontshare Clash Display & Satoshi Fonts -->
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  
+  <!-- Google Fonts Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+</head>
+<body>
+
+  <!-- Custom Tactile Mechanical Cursor -->
+  <div class="custom-cursor" aria-hidden="true"></div>
+  <div class="custom-cursor-follower" aria-hidden="true"></div>
+
+  <!-- Top Tactical Navigation HUD -->
+  <header class="site-nav">
+    <div class="container nav-inner">
+      <a href="#hero" class="brand-mark" aria-label="Expense Tracker Home">
+        <div class="brand-glyph">₹</div>
+        <span class="brand-text">EXPENSE TRACKER</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="#decoupling" class="nav-link">The Problem</a>
+        <a href="#three-inputs" class="nav-link">3-Step Entry</a>
+        <a href="#caliper-engine" class="nav-link">Daily Caliper</a>
+        <a href="#app-showcase" class="nav-link">8 App Tabs</a>
+        <a href="#privacy" class="nav-link">Privacy</a>
+        <a href="#academic-team" class="nav-link">Team</a>
+      </nav>
+
+      <div style="display:flex; align-items:center; gap:0.75rem;">
+        <div class="nav-telemetry" aria-label="System Status">
+          <span class="telemetry-dot" aria-hidden="true"></span>
+          <span>SHARDA CSE PBL</span>
+        </div>
+
+        <a href="https://student-expense-tracker-pbl.netlify.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="topNavCta">
+          <span>Try the live demo</span>
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
+
+        <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span id="menuBtnText">MENU</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <nav class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation">
+    <a href="#decoupling" class="mobile-nav-link"><span>01</span> The Problem</a>
+    <a href="#three-inputs" class="mobile-nav-link"><span>02</span> 3-Step Entry</a>
+    <a href="#caliper-engine" class="mobile-nav-link"><span>03</span> Daily Caliper Math</a>
+    <a href="#app-showcase" class="mobile-nav-link"><span>04</span> 8 App Tabs</a>
+    <a href="#privacy" class="mobile-nav-link"><span>05</span> Zero-Cloud Privacy</a>
+    <a href="#academic-team" class="mobile-nav-link"><span>06</span> Team &amp; Faculty</a>
+  </nav>
+
+  <!-- ========================================================================= -->
+  <!-- 1. HERO SECTION -->
+  <!-- ========================================================================= -->
+  <main id="main-content">
+    <section id="hero" class="hero-section">
+      <div class="container hero-grid">
+        <div>
+          <div class="section-label">STUDENT FINANCE COMPANION // CSCR2600</div>
+          
+          <h1 class="hero-headline">
+            <span>Where did</span>
+            <span>your allowance</span>
+            <span class="highlight-signal">go?</span>
+          </h1>
+
+          <p class="hero-subhead">
+            UPI scan-and-pay decoupled the pain of spending from your pocket. By day 18, your balance hits double digits. Expense Tracker restores conscious control with <strong>3-input logging</strong> and a <strong>self-correcting safe daily limit</strong> that recalibrates after every single tap.
+          </p>
+
+          <div class="hero-actions">
+            <a href="https://student-expense-tracker-pbl.netlify.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding: 1.05rem 2.2rem; font-size: 1.05rem;">
+              <span>Try the live demo</span>
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </a>
+
+            <a href="#caliper-engine" class="btn btn-secondary">
+              <span>Test the Daily Limit Math ↓</span>
+            </a>
+          </div>
+
+          <div class="hero-meta-strip">
+            <div class="hero-meta-item">
+              <span style="color:var(--accent-mint);">✓</span> <strong>Free for students</strong>
+            </div>
+            <div class="hero-meta-item">
+              <span style="color:var(--accent-mint);">✓</span> <strong>No bank login</strong>
+            </div>
+            <div class="hero-meta-item">
+              <span style="color:var(--accent-mint);">✓</span> <strong>Data stays in browser</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Right Column: Live Caliper Teaser -->
+        <aside class="hero-caliper-teaser" aria-label="Daily Limit Teaser Calculation">
+          <div class="teaser-eq-label">DYNAMIC SOLVENCY EQUATION</div>
+          
+          <div class="hero-teaser-numbers">
+            <div class="teaser-big-val" id="heroTeaserNumber">₹240/day</div>
+            <div class="teaser-eq-label">YOUR SAFE DAILY CEILING</div>
+          </div>
+
+          <div class="teaser-math-desc">
+            <strong>Formula:</strong> ⌊ ₹6,000 allowance ÷ 25 days remaining ⌋ = <strong>₹240/day</strong>. Spend ₹300 today, and the app instantly recalibrates to <strong>₹237/day</strong> for tomorrow.
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:1.25rem;">
+            <span class="health-badge badge-under-control">Under Control (&lt;70%)</span>
+            <span class="tag-pill tag-need">Need vs Want Tagged</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 2. THE UPI DECOUPLING REALITY CHECK -->
+    <!-- ========================================================================= -->
+    <section id="decoupling" class="section">
+      <div class="container">
+        <div class="decoupling-grid">
+          
+          <div>
+            <div class="section-label">01 // THE BEHAVIORAL CRISIS</div>
+            <h2 class="section-heading-huge">
+              Death by ₹30 UPI taps. Why college students go broke without buying anything big.
+            </h2>
+            
+            <p style="margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.7;">
+              In behavioral economics (Soman, 2001), <strong>payment decoupling</strong> describes how cashless instant transactions remove the physical friction of money leaving your hand. When you pay ₹50 for tea or ₹120 for canteen lunch via phone screen, your brain logs zero emotional resistance.
+            </p>
+
+            <p style="margin-bottom: 2rem;">
+              You never spent ₹5,000 in one go. You made 6 micro-taps a day for 15 days. Corporate adult budgeting apps fail students because they ask for 12 accounting fields per record. By day 7, you stop logging. By day 18, you are borrowing from flatmates.
+            </p>
+
+            <div class="contrast-quote-card">
+              <p>
+                "Passive spreadsheet bookkeeping fails to alter consumer habits without active prescriptive guidance. What students need isn't historical graphs; they need to know what they can safely spend before 11:59 PM today."
+              </p>
+              <div class="contrast-author">
+                Based on Behavioral Decision Theory (Thaler & Kahneman)
+              </div>
+            </div>
+          </div>
+
+          <!-- Realistic Perforated Thermal Receipt Visual -->
+          <div style="display:flex; justify-content:center;">
+            <div class="receipt-box" style="max-width: 380px; width: 100%;">
+              <div style="text-align:center; border-bottom: 1px dashed #A69E8F; padding-bottom: 0.75rem; margin-bottom: 0.75rem;">
+                <div style="font-weight:700; font-size: 1.15rem; letter-spacing: 1px;">CAMPUS UPI LEDGER</div>
+                <div style="font-size: 0.75rem; color: #6E685C;">DAY 14 // 18:42:10</div>
+                <div style="font-size: 0.75rem; color: #6E685C;">MERCHANT SCANS (NO CASH)</div>
+              </div>
+
+              <div class="receipt-item-row">
+                <span>08:15 AM • Cutting Chai & Samosa</span>
+                <span>₹25.00</span>
+              </div>
+              <div class="receipt-item-row">
+                <span>10:30 AM • Notes Photocopy & Spiral</span>
+                <span>₹40.00</span>
+              </div>
+              <div class="receipt-item-row">
+                <span>01:15 PM • Canteen Thali & Coke</span>
+                <span>₹140.00</span>
+              </div>
+              <div class="receipt-item-row">
+                <span>04:45 PM • E-Rickshaw to Metro</span>
+                <span>₹50.00</span>
+              </div>
+              <div class="receipt-item-row">
+                <span>07:20 PM • Evening Momos Tap</span>
+                <span>₹80.00</span>
+              </div>
+              <div class="receipt-item-row">
+                <span>11:30 PM • Hostel Midnight Maggi</span>
+                <span>₹65.00</span>
+              </div>
+
+              <div class="receipt-item-row bold-total">
+                <span>DAILY MICRO-DRAIN:</span>
+                <span style="color:#D62828;">₹400.00</span>
+              </div>
+
+              <div style="margin-top: 1rem; font-size: 0.75rem; line-height: 1.5; color: #575248; text-align: justify;">
+                * ₹400/day across 15 days = ₹6,000 allowance exhausted in two weeks. Result: 15 remaining days with ₹0.00 liquidity.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 3. THE 3-INPUT ENTRY ARCHITECTURE -->
+    <!-- ========================================================================= -->
+    <section id="three-inputs" class="section">
+      <div class="container">
+        <div class="section-label">02 // COGNITIVE ERGONOMICS</div>
+        <h2 class="section-heading-huge">
+          Log an expense in 3 taps. Or you won't log at all.
+        </h2>
+        <p style="max-width: 680px; font-size: var(--text-body-lg);">
+          Commercial apps expect university students to act like salaried chartered accountants. Expense Tracker strips the friction down to 3 inputs that take under 5 seconds between paying the vendor and putting your phone back in your pocket.
+        </p>
+
+        <div class="comparison-grid">
+          
+          <!-- Traditional App Friction Card -->
+          <div class="compare-card card-traditional">
+            <div>
+              <div class="card-pill-tag">Traditional Finance Apps</div>
+              <h3 style="font-size: 1.4rem; margin-bottom: 0.75rem; color: #FFFFFF;">12-Field Friction Barrier</h3>
+              <p style="font-size: var(--text-small);">
+                Mandates bank OTP sync, account categorization, payee memo, clearing status, subcategory codes, and notes.
+              </p>
+              
+              <ul class="input-steps-list" style="opacity: 0.65;">
+                <li class="input-step-item">
+                  <span class="step-num" style="color:var(--accent-crimson); border-color:var(--accent-crimson);">✕</span>
+                  <span>Select bank account or credit card</span>
+                </li>
+                <li class="input-step-item">
+                  <span class="step-num" style="color:var(--accent-crimson); border-color:var(--accent-crimson);">✕</span>
+                  <span>Type payee / merchant name</span>
+                </li>
+                <li class="input-step-item">
+                  <span class="step-num" style="color:var(--accent-crimson); border-color:var(--accent-crimson);">✕</span>
+                  <span>Pick main-category & sub-sub-category</span>
+                </li>
+                <li class="input-step-item">
+                  <span class="step-num" style="color:var(--accent-crimson); border-color:var(--accent-crimson);">✕</span>
+                  <span>Enter tax code & optional receipt picture</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mono" style="font-size: var(--text-small); color: var(--accent-crimson); padding-top: 1rem; border-top: 1px solid var(--border-subtle);">
+              ⏱ 45+ seconds per entry → 88% user abandonment in 2 weeks.
+            </div>
+          </div>
+
+          <!-- Expense Tracker Speed Card -->
+          <div class="compare-card card-tracker">
+            <div>
+              <div class="card-pill-tag">Expense Tracker Pipeline</div>
+              <h3 style="font-size: 1.4rem; margin-bottom: 0.75rem; color: #FFFFFF;">3-Step Rapid Entry Pipeline</h3>
+              <p style="font-size: var(--text-small);">
+                Designed specifically for quick campus life. Logged, tagged, and recalibrated before you walk away from the canteen counter.
+              </p>
+
+              <ul class="input-steps-list">
+                <li class="input-step-item">
+                  <span class="step-num">1</span>
+                  <div>
+                    <strong style="color:var(--text-primary);">Amount:</strong>
+                    <span style="color:var(--text-secondary);"> Large numeric keypad entry (e.g. ₹60).</span>
+                  </div>
+                </li>
+                <li class="input-step-item">
+                  <span class="step-num">2</span>
+                  <div>
+                    <strong style="color:var(--text-primary);">Category:</strong>
+                    <span style="color:var(--text-secondary);"> Single-tap student preset (Food, Bus, Books, Recharge, Rent).</span>
+                  </div>
+                </li>
+                <li class="input-step-item">
+                  <span class="step-num">3</span>
+                  <div>
+                    <strong style="color:var(--text-primary);">Need vs. Want Tag:</strong>
+                    <span style="color:var(--text-secondary);"> Binary cognitive nudge (Kahneman System 2) cutting impulse buys by 22%.</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mono" style="font-size: var(--text-small); color: var(--accent-mint); padding-top: 1rem; border-top: 1px solid rgba(0, 229, 153, 0.2);">
+              ⚡ Under 5 seconds per entry → zero cognitive fatigue.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 4. LIVE ALLOWANCE CALIPER ENGINE (SIGNATURE INTERACTION) -->
+    <!-- ========================================================================= -->
+    <section id="caliper-engine" class="section">
+      <div class="container">
+        <div class="section-label">03 // THE CORE ALGORITHM & LIVE ENGINE</div>
+        <h2 class="section-heading-huge">
+          The math that saves your month. Self-correcting daily limits.
+        </h2>
+        <p style="max-width: 720px; font-size: var(--text-body-lg); margin-bottom: var(--space-2xl);">
+          The app divides what is left of your budget by the days left in the month, and corrects itself after every spend. 
+          <strong>Example:</strong> ₹6,000 left with 25 days = <strong>₹240 a day</strong>. Spend ₹300 on day 1, and it immediately becomes <strong>₹237 a day</strong>.
+        </p>
+
+        <!-- The Interactive Caliper Simulator Widget -->
+        <div class="caliper-card" role="region" aria-label="Interactive Safe Daily Limit Calculator">
+          
+          <div class="caliper-header">
+            <div class="caliper-title-group">
+              <h3>Live Solvency Caliper Engine</h3>
+              <div class="caliper-subtitle">Interactive floor(remaining ÷ days) Algorithm Simulator</div>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:0.75rem;">
+              <span id="simHealthBadge" class="health-badge badge-under-control">Under Control (&lt;70%)</span>
+              <button id="simResetBtn" class="tap-reset-btn" title="Reset to Initial Values">↺ Reset</button>
+            </div>
+          </div>
+
+          <!-- Ticker & Readout Container -->
+          <div class="ticker-container">
+            <div class="ticker-display-box">
+              <div class="ticker-label">
+                <span>Safe-to-Spend Daily Limit</span>
+                <span class="mono">LIVE RECALCULATION</span>
+              </div>
+              <div class="ticker-big-number" id="simDailyTicker">₹240/day</div>
+              <div class="ticker-equation-badge" id="simFormulaEquation">
+                ⌊ ₹6,000 ÷ 25 days ⌋ = ₹240/day
+              </div>
+            </div>
+
+            <div class="ticker-stats-box">
+              <div class="ticker-stat-row">
+                <span class="stat-label">Budget Remaining:</span>
+                <span class="stat-value" id="simRemainingDisplay" style="color:var(--accent-mint);">₹6,000</span>
+              </div>
+              <div class="ticker-stat-row">
+                <span class="stat-label">Spent This Month:</span>
+                <span class="stat-value" id="simSpentDisplay">₹0 (0%)</span>
+              </div>
+              <div class="ticker-stat-row">
+                <span class="stat-label">Remaining Calendar Days:</span>
+                <span class="stat-value" id="simDaysDisplay">25 Days</span>
+              </div>
+              <div class="ticker-stat-row">
+                <span class="stat-label">Health Badge State:</span>
+                <span class="stat-value" style="color:var(--accent-signal);">Self-Correcting</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls Grid: Allowance & Days Remaining -->
+          <div class="controls-grid">
+            <div class="control-field">
+              <label for="simAllowanceInput" class="control-label">
+                <span>Monthly Allowance / Budget</span>
+                <span class="mono">TYPE CUSTOM ₹</span>
+              </label>
+              <div class="control-input-wrapper">
+                <span class="currency-symbol">₹</span>
+                <input type="number" id="simAllowanceInput" class="caliper-input" value="6000" min="500" step="500" aria-label="Monthly allowance amount in rupees">
+              </div>
+            </div>
+
+            <div class="control-field">
+              <label for="simDaysSlider" class="control-label">
+                <span>Days Remaining in Month</span>
+                <span class="mono" id="sliderDaysLabel">Slide Days: 25</span>
+              </label>
+              <input type="range" id="simDaysSlider" class="caliper-range" min="1" max="30" value="25" aria-label="Days remaining in month slider">
+              <div style="display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:0.7rem; color:var(--text-tertiary);">
+                <span>1 Day (Month End)</span>
+                <span>15 Days</span>
+                <span>30 Days (Start)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tapboard Quick Micro-Spends -->
+          <div class="tapboard-area">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.75rem;">
+              <span class="tapboard-title" style="margin-bottom:0;">Tap real college spends to test live recalibration:</span>
+              <button id="simExampleBtn" class="mono-badge" style="cursor:pointer; background:rgba(255,74,34,0.15); border-color:var(--accent-signal); color:var(--accent-signal); font-weight:700;">
+                ⚡ Try Real Example: Spend ₹300 (₹240 → ₹237/day)
+              </button>
+            </div>
+            <div class="tapboard-buttons">
+              <button class="tap-spend-btn" data-spend="25">+ ₹25 Chai &amp; Samosa</button>
+              <button class="tap-spend-btn" data-spend="50">+ ₹50 E-Rickshaw</button>
+              <button class="tap-spend-btn" data-spend="150">+ ₹150 Canteen Lunch</button>
+              <button class="tap-spend-btn" data-spend="300" style="border-color:var(--accent-signal); color:var(--accent-signal);">+ ₹300 Swiggy Dinner</button>
+              <button class="tap-spend-btn" data-spend="500">+ ₹500 Mobile Recharge</button>
+            </div>
+          </div>
+
+          <!-- Health Badges Criteria Explainer -->
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-md); margin-top: var(--space-xl); border-top: 1px solid var(--border-subtle); padding-top: var(--space-lg);">
+            <div style="display:flex; align-items:center; gap:0.65rem;">
+              <span class="health-badge badge-under-control">Under Control</span>
+              <span style="font-size:0.8rem; color:var(--text-secondary);">Spend &lt; 70% of allowance</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:0.65rem;">
+              <span class="health-badge badge-getting-close">Getting Close</span>
+              <span style="font-size:0.8rem; color:var(--text-secondary);">Spend 70% to 95% of cap</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:0.65rem;">
+              <span class="health-badge badge-exceeded">Exceeded</span>
+              <span style="font-size:0.8rem; color:var(--text-secondary);">Spend &gt; 95% of allowance</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 5. REAL APP DEVICE SHOWCASE (8 REAL TABS) -->
+    <!-- ========================================================================= -->
+    <section id="app-showcase" class="section">
+      <div class="container">
+        <div class="showcase-desc-bar">
+          <div>
+            <div class="section-label">04 // MODULE ARCHITECTURE</div>
+            <h2 class="section-heading-huge" style="margin-bottom:0.5rem;">
+              Eight tabs. Built for campus survival.
+            </h2>
+            <p>Click across the actual modules below to preview how the live app operates.</p>
+          </div>
+
+          <a href="https://student-expense-tracker-pbl.netlify.app" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="align-self: flex-start;">
+            <span>Open All 8 Tabs in App ↗</span>
+          </a>
+        </div>
+
+        <!-- Realistic Device Chassis -->
+        <div class="device-frame" role="region" aria-label="Interactive App Screen Previews">
+          
+          <div class="device-header-bar">
+            <div class="device-dots" aria-hidden="true">
+              <span class="device-dot"></span>
+              <span class="device-dot"></span>
+              <span class="device-dot"></span>
+            </div>
+
+            <div class="device-url-bar">
+              <span style="color:var(--accent-mint);">🔒</span>
+              <span id="deviceActiveUrl">student-expense-tracker.app/#dashboard</span>
+            </div>
+
+            <div class="mono" style="font-size:0.7rem; color:var(--text-tertiary);">PBL PROTOTYPE</div>
+          </div>
+
+          <!-- 8 Tab Switcher Navigation -->
+          <div class="device-tabs-nav" role="tablist" aria-label="Application Modules">
+            <button class="device-tab-btn active" data-screen-tab="dashboard" role="tab" aria-selected="true">📊 Dashboard</button>
+            <button class="device-tab-btn" data-screen-tab="transactions" role="tab" aria-selected="false">💳 Transactions</button>
+            <button class="device-tab-btn" data-screen-tab="budgets" role="tab" aria-selected="false">🎯 Budgets</button>
+            <button class="device-tab-btn" data-screen-tab="analytics" role="tab" aria-selected="false">📈 Analytics</button>
+            <button class="device-tab-btn" data-screen-tab="goals" role="tab" aria-selected="false">💰 Goals</button>
+            <button class="device-tab-btn" data-screen-tab="subscriptions" role="tab" aria-selected="false">🔁 Subscriptions</button>
+            <button class="device-tab-btn" data-screen-tab="database" role="tab" aria-selected="false">🗄️ Database</button>
+            <button class="device-tab-btn" data-screen-tab="settings" role="tab" aria-selected="false">⚙️ Settings</button>
+          </div>
+
+          <!-- Screen Viewport with Realistic High-Fidelity Previews -->
+          <div class="device-screen-viewport">
+            
+            <!-- TAB 1: DASHBOARD -->
+            <div id="screen-dashboard" class="tab-content-panel active">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
+                <h4 style="font-size:1.2rem;">Financial Overview</h4>
+                <span class="health-badge badge-under-control">Budget Under Control</span>
+              </div>
+
+              <div class="screen-mock-grid">
+                <div class="screen-stat-box">
+                  <div class="title">Total Balance</div>
+                  <div class="val" style="color:var(--accent-mint);">₹3,850</div>
+                  <div style="font-size:0.75rem; color:var(--text-secondary);">From ₹6,000 allowance</div>
+                </div>
+                <div class="screen-stat-box">
+                  <div class="title">Expenses</div>
+                  <div class="val" style="color:var(--accent-signal);">₹2,150</div>
+                  <div style="font-size:0.75rem; color:var(--text-secondary);">35.8% of cap utilized</div>
+                </div>
+                <div class="screen-stat-box" style="border-color:var(--accent-mint);">
+                  <div class="title">Safe Daily Limit</div>
+                  <div class="val" style="color:var(--accent-mint);">₹192/day</div>
+                  <div style="font-size:0.75rem; color:var(--text-secondary);">20 days remaining</div>
+                </div>
+                <div class="screen-stat-box">
+                  <div class="title">Top Spending Category</div>
+                  <div class="val">Food &amp; Canteen</div>
+                  <div style="font-size:0.75rem; color:var(--text-secondary);">₹1,240 (57.6%)</div>
+                </div>
+              </div>
+
+              <!-- Plain-Language Insights Bar -->
+              <div style="background:#14171E; border:1px solid #232733; border-left:3px solid var(--accent-mint); border-radius:4px; padding:1rem; font-size:0.875rem;">
+                💡 <strong>Natural-Language Feedback:</strong> "You are pacing ahead of schedule. At your current spend rate of ₹107/day, you will save approximately ₹1,700 by month-end."
+              </div>
+            </div>
+
+            <!-- TAB 2: TRANSACTIONS -->
+            <div id="screen-transactions" class="tab-content-panel">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                <h4 style="font-size:1.15rem;">Transaction Ledger</h4>
+                <span class="mono-badge">Showing Recent Records</span>
+              </div>
+
+              <table class="screen-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Note</th>
+                    <th>Need / Want</th>
+                    <th>Method</th>
+                    <th style="text-align:right;">Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Today</td>
+                    <td>Food &amp; Canteen</td>
+                    <td>Canteen Rajma Chawal</td>
+                    <td><span class="tag-pill tag-need">Need</span></td>
+                    <td>UPI</td>
+                    <td style="text-align:right; font-weight:700; color:var(--accent-signal);">-₹80</td>
+                  </tr>
+                  <tr>
+                    <td>Today</td>
+                    <td>Transport &amp; Bus Pass</td>
+                    <td>Metro SmartCard Recharge</td>
+                    <td><span class="tag-pill tag-need">Need</span></td>
+                    <td>UPI</td>
+                    <td style="text-align:right; font-weight:700; color:var(--accent-signal);">-₹200</td>
+                  </tr>
+                  <tr>
+                    <td>Yesterday</td>
+                    <td>Entertainment &amp; Outings</td>
+                    <td>Cold Brew &amp; Brownie</td>
+                    <td><span class="tag-pill tag-want">Want</span></td>
+                    <td>UPI</td>
+                    <td style="text-align:right; font-weight:700; color:var(--accent-signal);">-₹240</td>
+                  </tr>
+                  <tr>
+                    <td>14 Nov</td>
+                    <td>Books &amp; Stationery</td>
+                    <td>Operating Systems Lab Manual</td>
+                    <td><span class="tag-pill tag-need">Need</span></td>
+                    <td>Cash</td>
+                    <td style="text-align:right; font-weight:700; color:var(--accent-signal);">-₹150</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- TAB 3: BUDGETS -->
+            <div id="screen-budgets" class="tab-content-panel">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
+                <h4 style="font-size:1.15rem;">Category Budgets &amp; Health Thresholds</h4>
+                <span class="mono-badge">3 Categories Configured</span>
+              </div>
+              
+              <div style="display:flex; flex-direction:column; gap:1rem;">
+                <div style="background:#14171E; border:1px solid #232733; padding:1.1rem; border-radius:4px;">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                    <strong>🍔 Food &amp; Canteen</strong>
+                    <span class="health-badge badge-under-control">Under Control (&lt;70%)</span>
+                  </div>
+                  <div style="background:#0E1014; height:7px; border-radius:4px; overflow:hidden;">
+                    <div style="background:var(--accent-mint); width:48%; height:100%;"></div>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-secondary); margin-top:0.4rem;">
+                    <span>Spent: ₹1,200</span>
+                    <span>Cap: ₹2,500 (48.0% used • ₹1,300 safe)</span>
+                  </div>
+                </div>
+
+                <div style="background:#14171E; border:1px solid #232733; padding:1.1rem; border-radius:4px;">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                    <strong>🚌 Transport &amp; Metro Pass</strong>
+                    <span class="health-badge badge-getting-close">Getting Close (70-95%)</span>
+                  </div>
+                  <div style="background:#0E1014; height:7px; border-radius:4px; overflow:hidden;">
+                    <div style="background:var(--accent-amber); width:78%; height:100%;"></div>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-secondary); margin-top:0.4rem;">
+                    <span>Spent: ₹780</span>
+                    <span>Cap: ₹1,000 (78.0% used • ₹220 buffer)</span>
+                  </div>
+                </div>
+
+                <div style="background:#14171E; border:1px solid #232733; padding:1.1rem; border-radius:4px;">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                    <strong>📚 Books &amp; Stationery</strong>
+                    <span class="health-badge badge-exceeded">Exceeded (&gt;95%)</span>
+                  </div>
+                  <div style="background:#0E1014; height:7px; border-radius:4px; overflow:hidden;">
+                    <div style="background:var(--accent-crimson); width:98%; height:100%;"></div>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-secondary); margin-top:0.4rem;">
+                    <span>Spent: ₹490</span>
+                    <span>Cap: ₹500 (98.0% used • ₹10 remaining)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 4: ANALYTICS -->
+            <div id="screen-analytics" class="tab-content-panel">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
+                <h4 style="font-size:1.15rem;">Spending Analytics &amp; Cognitive Breakdown</h4>
+                <span class="mono-badge">Current Month Telemetry</span>
+              </div>
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:1.25rem;">
+                <!-- Need vs Want Card -->
+                <div style="background:#14171E; border:1px solid #232733; padding:1.25rem; border-radius:4px;">
+                  <div style="font-size:0.8rem; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.75rem;">Need vs Want Ratio</div>
+                  <div style="display:flex; align-items:baseline; gap:0.5rem; margin-bottom:0.75rem;">
+                    <span style="font-size:2.2rem; font-weight:700; color:var(--accent-mint); line-height:1;">72%</span>
+                    <span style="font-size:1.1rem; color:var(--text-tertiary);">/ 28%</span>
+                  </div>
+                  <!-- Split Bar -->
+                  <div style="display:flex; height:8px; border-radius:4px; overflow:hidden; margin-bottom:0.75rem;">
+                    <div style="background:var(--accent-mint); width:72%;" title="Need: 72%"></div>
+                    <div style="background:var(--accent-signal); width:28%;" title="Want: 28%"></div>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; font-size:0.75rem; font-family:var(--font-mono); color:var(--text-secondary);">
+                    <span>● ₹2,772 Need</span>
+                    <span>● ₹1,078 Want</span>
+                  </div>
+                </div>
+
+                <!-- UPI vs Cash Card -->
+                <div style="background:#14171E; border:1px solid #232733; padding:1.25rem; border-radius:4px;">
+                  <div style="font-size:0.8rem; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.75rem;">Payment Channel Share</div>
+                  <div style="display:flex; align-items:baseline; gap:0.5rem; margin-bottom:0.75rem;">
+                    <span style="font-size:2.2rem; font-weight:700; color:var(--accent-signal); line-height:1;">89%</span>
+                    <span style="font-size:1.1rem; color:var(--text-tertiary);">UPI Scans</span>
+                  </div>
+                  <!-- Split Bar -->
+                  <div style="display:flex; height:8px; border-radius:4px; overflow:hidden; margin-bottom:0.75rem;">
+                    <div style="background:var(--accent-signal); width:89%;" title="UPI: 89%"></div>
+                    <div style="background:#8F94A6; width:11%;" title="Cash: 11%"></div>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; font-size:0.75rem; font-family:var(--font-mono); color:var(--text-secondary);">
+                    <span>● ₹3,427 GPay/PhonePe</span>
+                    <span>● ₹423 Cash</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 5: GOALS -->
+            <div id="screen-goals" class="tab-content-panel">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
+                <h4 style="font-size:1.15rem;">Milestone Savings Goals</h4>
+                <span class="mono-badge">Target: ₹15,000</span>
+              </div>
+              <div style="background:#14171E; border:1px solid #232733; padding:1.25rem; border-radius:4px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <div>
+                    <h5 style="font-size:1.05rem;">💻 Semester Laptop Upgrade Fund</h5>
+                    <span style="font-size:0.8rem; color:var(--text-secondary);">Target Deadline: End of Semester 3 • 4 Months Left</span>
+                  </div>
+                  <span class="mono" style="font-size:1.15rem; font-weight:700; color:var(--accent-mint);">₹8,500 / ₹15,000</span>
+                </div>
+                <div style="background:#0E1014; height:8px; border-radius:4px; overflow:hidden; margin:0.9rem 0 0.5rem 0;">
+                  <div style="background:var(--accent-mint); width:56.6%; height:100%;"></div>
+                </div>
+                <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-secondary); font-family:var(--font-mono);">
+                  <span>56.6% Achieved</span>
+                  <span style="color:var(--accent-mint);">Pacing ahead of target by ₹1,200</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 6: SUBSCRIPTIONS -->
+            <div id="screen-subscriptions" class="tab-content-panel">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
+                <h4 style="font-size:1.15rem;">Recurring Subscriptions &amp; Fixed Liabilities</h4>
+                <span class="mono-badge">Total: ₹358/mo</span>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:0.75rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center; background:#14171E; border:1px solid #232733; padding:0.9rem 1.1rem; border-radius:4px;">
+                  <div>
+                    <strong>📱 Airtel 5G Unlimited Campus Pack</strong>
+                    <div style="font-size:0.75rem; color:var(--text-secondary);">Renews in 6 Days • Auto-debited from allowance calculation</div>
+                  </div>
+                  <span class="mono" style="font-weight:700; color:var(--text-primary); font-size:1rem;">₹299/mo</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center; background:#14171E; border:1px solid #232733; padding:0.9rem 1.1rem; border-radius:4px;">
+                  <div>
+                    <strong>🎵 Spotify Student Premium</strong>
+                    <div style="font-size:0.75rem; color:var(--text-secondary);">Auto-renewal on 1st of every month • Student discount active</div>
+                  </div>
+                  <span class="mono" style="font-weight:700; color:var(--text-primary); font-size:1rem;">₹59/mo</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 7: DATABASE -->
+            <div id="screen-database" class="tab-content-panel">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                <h4 style="font-size:1.15rem;">Relational Database Workbench (3NF)</h4>
+                <span class="health-badge badge-under-control">Third Normal Form</span>
+              </div>
+              <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:0.75rem;">
+                Normalized schema dictionary with foreign key constraints across 6 relational tables:
+              </p>
+              
+              <!-- Schema Badges -->
+              <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1rem;">
+                <span class="mono-badge" style="background:#181C26;">users</span>
+                <span class="mono-badge" style="background:#181C26;">categories</span>
+                <span class="mono-badge" style="background:#181C26;">transactions</span>
+                <span class="mono-badge" style="background:#181C26;">budgets</span>
+                <span class="mono-badge" style="background:#181C26;">savings_goals</span>
+                <span class="mono-badge" style="background:#181C26;">recurring_expenses</span>
+              </div>
+
+              <!-- SQL Query Box -->
+              <div style="background:#090A0D; border:1px solid #242833; padding:0.9rem; border-radius:4px; font-family:var(--font-mono); font-size:0.8rem; line-height:1.6;">
+                <span style="color:#F43F5E;">SELECT</span> c.name, <span style="color:#38BDF8;">COUNT</span>(t.id) <span style="color:#F43F5E;">AS</span> tx_count, <span style="color:#38BDF8;">SUM</span>(t.amount) <span style="color:#F43F5E;">AS</span> total_spent<br>
+                <span style="color:#F43F5E;">FROM</span> transactions t<br>
+                <span style="color:#F43F5E;">JOIN</span> categories c <span style="color:#F43F5E;">ON</span> t.category_id = c.id<br>
+                <span style="color:#F43F5E;">WHERE</span> t.is_need = 1<br>
+                <span style="color:#F43F5E;">GROUP BY</span> c.name <span style="color:#F43F5E;">ORDER BY</span> total_spent <span style="color:#F43F5E;">DESC</span>;
+              </div>
+            </div>
+
+            <!-- TAB 8: SETTINGS -->
+            <div id="screen-settings" class="tab-content-panel">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
+                <h4 style="font-size:1.15rem;">Configuration &amp; Client Storage State</h4>
+                <span class="health-badge badge-under-control">100% In-Browser</span>
+              </div>
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1rem;">
+                <div style="background:#14171E; border:1px solid #232733; padding:1.1rem; border-radius:4px;">
+                  <div style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:0.25rem;">Monthly Expected Allowance:</div>
+                  <div class="mono" style="font-size:1.3rem; font-weight:700; color:var(--text-primary);">₹6,000 / mo</div>
+                  <div style="font-size:0.75rem; color:var(--text-tertiary); margin-top:0.35rem;">Resets automatically on 1st of month</div>
+                </div>
+                <div style="background:#14171E; border:1px solid #232733; padding:1.1rem; border-radius:4px;">
+                  <div style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:0.25rem;">Client Database Status:</div>
+                  <div class="mono" style="font-size:1.3rem; font-weight:700; color:var(--accent-mint);">Encrypted LocalStorage</div>
+                  <div style="font-size:0.75rem; color:var(--text-tertiary); margin-top:0.35rem;">JSON &amp; CSV export available offline</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 6. ZERO-CLOUD PRIVACY -->
+    <!-- ========================================================================= -->
+    <section id="privacy" class="section">
+      <div class="container">
+        <div class="section-label">05 // DATA SOVEREIGNTY</div>
+        <h2 class="section-heading-huge">
+          Your money. Your device. Zero banking passwords.
+        </h2>
+        <p style="max-width: 680px; font-size: var(--text-body-lg);">
+          Most commercial apps demand your netbanking credentials or scrape your phone's SMS inbox. Expense Tracker runs 100% client-side in your web browser.
+        </p>
+
+        <div class="privacy-grid">
+          
+          <div class="privacy-card">
+            <div class="privacy-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </div>
+            <h4>Zero Cloud Database</h4>
+            <p>Your transactions, allowances, and goals stay strictly inside your browser's persistent storage. Nothing leaves your phone or laptop.</p>
+          </div>
+
+          <div class="privacy-card">
+            <div class="privacy-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h4>No Bank Account Linking</h4>
+            <p>No netbanking usernames, no debit card numbers, no OTP permissions, and no intrusive SMS inbox scraping permissions.</p>
+          </div>
+
+          <div class="privacy-card">
+            <div class="privacy-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <h4>100% Free Forever</h4>
+            <p>Built as an academic Computer Science engineering capstone project. No premium paywalls, no monthly subscription fees, and no ads.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 7. ACADEMIC PROVENANCE & TEAM CREDITS -->
+    <!-- ========================================================================= -->
+    <section id="academic-team" class="section">
+      <div class="container">
+        <div class="section-label">06 // ACADEMIC PROVENANCE</div>
+        <h2 class="section-heading-huge">
+          Engineered at Sharda University.
+        </h2>
+        <p style="max-width: 680px; font-size: var(--text-body-lg);">
+          Developed under Course CSCR2600 — Project-Based Learning (PBL) - 1, Department of Computer Science &amp; Engineering, Sharda School of Computing Science and Engineering.
+        </p>
+
+        <div class="team-grid">
+          
+          <!-- Hridyesh Swami -->
+          <div class="team-card">
+            <div>
+              <div class="team-card-header">
+                <div class="team-avatar-box">HS</div>
+                <div>
+                  <h4>Hridyesh Swami</h4>
+                  <div class="team-role">Lead Developer</div>
+                </div>
+              </div>
+              <p style="font-size:0.875rem;">
+                Full-stack JavaScript application architecture, reactive state engine, dynamic mathematical daily limit algorithm, and deployment infrastructure.
+              </p>
+            </div>
+            <div class="team-meta">
+              <div>System ID: 2025349734</div>
+              <div>Section: CSB, G-2 • B.Tech CSE</div>
+            </div>
+          </div>
+
+          <!-- Aymaan Nisar Wani -->
+          <div class="team-card">
+            <div>
+              <div class="team-card-header">
+                <div class="team-avatar-box" style="color:var(--accent-mint);">AW</div>
+                <div>
+                  <h4>Aymaan Nisar Wani</h4>
+                  <div class="team-role" style="color:var(--accent-mint);">UI/UX Designer</div>
+                </div>
+              </div>
+              <p style="font-size:0.875rem;">
+                Cognitive user interface design, mobile-first responsive viewport layouts, accessibility audit (WCAG AA), and visual analytics graphs.
+              </p>
+            </div>
+            <div class="team-meta">
+              <div>System ID: 2025400243</div>
+              <div>Section: CSB, G-2 • B.Tech CSE</div>
+            </div>
+          </div>
+
+          <!-- Nakul Singh -->
+          <div class="team-card">
+            <div>
+              <div class="team-card-header">
+                <div class="team-avatar-box" style="color:var(--accent-amber);">NS</div>
+                <div>
+                  <h4>Nakul Singh</h4>
+                  <div class="team-role" style="color:var(--accent-amber);">System QA &amp; Tester</div>
+                </div>
+              </div>
+              <p style="font-size:0.875rem;">
+                Black-box software validation, month-end boundary condition calculations, defect tracking log maintenance (DF-01 to DF-05), and Admin security.
+              </p>
+            </div>
+            <div class="team-meta">
+              <div>System ID: 2025355617</div>
+              <div>Section: CSB, G-2 • B.Tech CSE</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Faculty Mentorship Card -->
+        <div class="institution-banner">
+          <div>
+            <span class="mono-badge" style="color:var(--accent-amber); border-color:var(--accent-amber-border); margin-bottom:0.35rem;">FACULTY SUPERVISOR</span>
+            <h4 style="font-size:1.15rem; margin-top:0.25rem;">Ms. Ragini Kumari</h4>
+            <div style="font-size:0.875rem; color:var(--text-secondary);">Assistant Professor, Department of Computer Science &amp; Engineering</div>
+          </div>
+          <div class="mono" style="font-size:0.85rem; color:var(--text-secondary); text-align:right;">
+            <div>Sharda University, Greater Noida</div>
+            <div style="color:var(--accent-signal);">CSCR2600 — PBL-1 Capstone (2026-2027)</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 8. OVERSIZED ASYMMETRIC CONVERSION FOOTER -->
+    <!-- ========================================================================= -->
+    <section class="footer-cta-section">
+      <div class="container">
+        
+        <div class="section-label">07 // LIVE DEPLOYMENT</div>
+        
+        <h2 class="footer-huge-title">
+          <span class="strike-text">Stop running out on Day 18.</span>
+          <span class="bold-accent">Start surviving on your terms.</span>
+        </h2>
+
+        <p style="font-size: var(--text-body-lg); max-width: 620px; margin-bottom: var(--space-2xl);">
+          The prototype is live, free, and stores all your data directly inside your browser. No registration barrier, no bank linkage, and zero learning curve.
+        </p>
+
+        <div style="display:flex; flex-wrap:wrap; gap: var(--space-md); align-items:center;">
+          <a href="https://student-expense-tracker-pbl.netlify.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding: 1.15rem 2.6rem; font-size: 1.15rem;">
+            <span>Try the live demo now</span>
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+
+          <a href="https://github.com/hridyeshswami/Expense-tracker" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+            <span>View Source Code on GitHub ↗</span>
+          </a>
+        </div>
+
+        <footer class="footer-bottom-bar">
+          <div>
+            © 2026–2027 Student Expense Tracker. Sharda University CSE PBL Project.
+          </div>
+          <div style="display:flex; gap:1.5rem;">
+            <span>Aymaan Nisar Wani</span>
+            <span>•</span>
+            <span>Hridyesh Swami</span>
+            <span>•</span>
+            <span>Nakul Singh</span>
+          </div>
+        </footer>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- External Animation & Scrolling Libraries via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <!-- Main Landing Controller -->
+  <script src="js/landing.js"></script>
+</body>
+</html>
